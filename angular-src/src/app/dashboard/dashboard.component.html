@@ -28,7 +28,7 @@
             <tr>
                 
                 <th> LAB NAME </th>
-                <th> DESCRIPTION </th>
+                <th> Location </th>
                 <th> DELETE </th>
             </tr>
         </thead>
@@ -39,7 +39,7 @@
             <tr *ngFor="let x of lablist">
                        
                 <td>{{x.labname}}</td>
-                <td>{{x.description}}</td>
+                <td>{{x.location}}</td>
                <td> <button type="button" class="btn btn-outline-warning btn-rounded waves-effect" (click)="onLabDelete(x._id)">Delete </button><td>
             </tr>
             
