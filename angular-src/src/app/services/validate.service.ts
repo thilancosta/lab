@@ -21,4 +21,12 @@ export class ValidateService {
     return re.test(email);
   }
 
+  validateLab(lab){
+    if(lab.labname == undefined || lab.location == undefined){
+      return false;
+    } else {
+      return true;
+    }
+  }
+
 }

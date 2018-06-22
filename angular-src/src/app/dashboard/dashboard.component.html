@@ -1,2 +1,53 @@
-<h2 class="page-header">Dashboard</h2>
-<p>Welcome to your Dashboard</p>
+<div class="card mt-4 deep-purple lighten-5">
+    <!-- Material form contact -->
+    <div class="card-body">
+    <form (submit)="onLabSubmit()">
+      <p class="h4 text-center mb-4"> Add New Lab </p>
+      
+      <div class="md-form">
+        <input type="text" id="labname" class="form-control" [(ngModel)]="labname" name="labname" placeholder="Lab Name">
+      </div>
+    
+      <div class="md-form">
+          <input type="text" id="location" class="form-control" [(ngModel)]="location" name="location" placeholder="Lab Location">
+      </div>
+    
+      <div class="text-center mt-4">
+          <button class="btn btn-outline-secondary" type="submit">Add</button>
+      </div>
+    </form>
+    </div>
+    </div>
+    
+    <div>
+      <!--Table-->
+    <table *ngIf="lablist" class="table mt-5">
+    
+        <!--Table head-->
+        <thead class="table-bordered">
+            <tr>
+                
+                <th> LAB NAME </th>
+                <th> DESCRIPTION </th>
+                <th> DELETE </th>
+            </tr>
+        </thead>
+      <!--Table head-->
+    
+        <!--Table body-->
+        <tbody >
+            <tr *ngFor="let x of lablist">
+                       
+                <td>{{x.labname}}</td>
+                <td>{{x.description}}</td>
+               <td> <button type="button" class="btn btn-outline-warning btn-rounded waves-effect" (click)="onLabDelete(x._id)">Delete </button><td>
+            </tr>
+            
+        </tbody>
+        <!--Table body-->
+    
+    </table>
+    <!--Table-->
+    
+    <div>
+    <!-- Material form contact -->

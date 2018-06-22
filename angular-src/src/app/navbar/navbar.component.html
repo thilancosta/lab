@@ -1,13 +1,8 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container">
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" href="#">Mean Auth App</a>
+      
+      <a class="navbar-brand">Mean Auth App</a>
     </div>
     <div id="navbar" class="collapse navbar-collapse">
       <ul class="navbar-nav mr-auto">
@@ -15,7 +10,7 @@
       </ul>
 
       <ul class="navbar-nav mr-auto">
-        <li class="nav-item" *ngIf="authService.loggedIn()" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}"><a class="nav-link" [routerLink]="['/dashboard']">Dashboard</a></li>
+        <li class="nav-item" *ngIf="authService.loadUserType()" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}"><a class="nav-link" [routerLink]="['/dashboard']">Dashboard</a></li>
         <li class="nav-item" *ngIf="authService.loggedIn()" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}"><a class="nav-link" [routerLink]="['/profile']">Profile</a></li>
         <li class="nav-item" *ngIf="!authService.loggedIn()" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}"><a class="nav-link" [routerLink]="['/login']">Login</a></li>
         <li class="nav-item" *ngIf="!authService.loggedIn()" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}"><a class="nav-link" [routerLink]="['/register']">Register</a></li>

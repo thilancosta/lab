@@ -1,6 +1,6 @@
 <div class="jumbotron text-center">
-  <h1>MEAN Authentication App</h1>
-  <p class="lead">Welcome to our custom MEAN authentication application built from scratch</p>
+  <h1>LAB Reservation System</h1>
+  <p class="lead">Welcome to UCSC Lab Reservation System</p>
   <div>
     <a class="btn btn-primary" [routerLink]="['/register']">Register</a> <a class="btn btn-default" [routerLink]="['/login']">Login</a>
   </div>
@@ -20,3 +20,17 @@
     <p>Full featured authentication using JSON web tokens. Login and store user data</p>
   </div>
 </div>
+
+<div *ngIf="lablist" class="row mt-3">
+  <div class="card col-md-4 mt-2" *ngFor="let x of lablist">
+    <h4 class="card-header mdb-color lighten-1 white-text">{{x.labname}} </h4>
+    <div class="card-body">
+        <h5 class="card-title"> {{x.description}}</h5>
+       <div class="row">      
+              <button [routerLink] = "['/addreservation']" type="button" class="btn btn-outline-default waves-effect">Reserve Lab </button>
+              <button (click)="showSearch(x.labname)" type="button" class="btn btn-outline-default waves-effect">View More </button>
+      </div>
+    </div>
+  </div>
+  
+  </div>

@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const config = require('../config/database');
-const User = require('../models/lab');
+const Lab = require('../models/lab');
 
 router.post('/newlab',(req,res,next)=>{
     let newLab = new Lab({
