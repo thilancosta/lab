@@ -19,6 +19,7 @@ import { ValidateService } from './services/validate.service';
 import { FlashMessagesModule } from 'angular2-flash-messages';
 import { AuthService } from './services/auth.service';
 import {AuthGuard} from './guards/auth.guard';
+import { ReservationComponent } from './reservation/reservation.component';
 
 const appRoutes: Routes = [
   {path:'', component: HomeComponent},
@@ -39,7 +40,8 @@ export function tokenGetter() {
     RegisterComponent,
     HomeComponent,
     DashboardComponent,
-    ProfileComponent
+    ProfileComponent,
+    ReservationComponent
   ],
   imports: [
     BrowserModule,

@@ -5,21 +5,21 @@
       <p class="h4 text-center mb-4"> Add New Lab </p>
       
       <div class="md-form">
-        <input type="text" id="labname" class="form-control" [(ngModel)]="labname" name="labname" placeholder="Lab Name">
+        <input type="text" id="labname" class="form-control" [(ngModel)]="labname" name="labname" placeholder="Lab Name" required>
       </div>
     
       <div class="md-form">
-          <input type="text" id="location" class="form-control" [(ngModel)]="location" name="location" placeholder="Lab Location">
+          <input type="text" id="location" class="form-control" [(ngModel)]="location" name="location" placeholder="Lab Location" required>
       </div>
     
       <div class="text-center mt-4">
-          <button class="btn btn-outline-secondary" type="submit">Add</button>
+          <button class="btn btn-primary btn-sm btn-outline-default waves-effect" type="submit">Add</button>
       </div>
     </form>
     </div>
-    </div>
-    
-    <div>
+</div>
+   
+<div>
       <!--Table-->
     <table *ngIf="lablist" class="table mt-5">
     
@@ -28,26 +28,25 @@
             <tr>
                 
                 <th> LAB NAME </th>
-                <th> Location </th>
-                <th> DELETE </th>
+                <th> LOCATION </th>
+                <th> ACTION </th>
             </tr>
         </thead>
       <!--Table head-->
     
         <!--Table body-->
-        <tbody >
+        <tbody class="table-bordered">
             <tr *ngFor="let x of lablist">
                        
                 <td>{{x.labname}}</td>
                 <td>{{x.location}}</td>
-               <td> <button type="button" class="btn btn-outline-warning btn-rounded waves-effect" (click)="onLabDelete(x._id)">Delete </button><td>
-            </tr>
-            
+                <td><button type="button" class="btn btn-primary btn-sm btn-outline-default waves-effect" (click)="onLabDelete(x._id)">Delete</button><td>
+            </tr>   
         </tbody>
         <!--Table body-->
     
     </table>
     <!--Table-->
     
-    <div>
     <!-- Material form contact -->
+</div>    

@@ -63,25 +63,15 @@ export class DashboardComponent implements OnInit {
 
   }
 
-  // onLabDelete(id) {
-  //     this.labService.deletelab(id).subscribe(data =>{
-  //       if(data.success){
-  //         this.ngFlashMessageService.showFlashMessage({
-  //           messages: ["Lab has been deleted Successfully"], 
-  //           dismissible: true, 
-  //           timeout: 5000,
-  //           type: 'success'
-  //        }); 
-  //        this.ngOnInit();
-  //       } else {
-  //         this.ngFlashMessageService.showFlashMessage({
-  //           messages: ["Something went wrong"], 
-  //           dismissible: true, 
-  //           timeout: 5000,
-  //           type: 'danger'
-  //        }); 
-  //       }
-  //     })
-  // }
+  onLabDelete(id) {
+      this.labService.deletelab(id).subscribe(data =>{
+        if(data.success){
+         this.FlashMessageService.show('Lab has been deleted Successfully',{cssClass: 'alert-success', timeout: 5000}) 
+         this.ngOnInit();
+        } else {
+         this.FlashMessageService.show('Something went wrong',{cssClass: 'alert-success', timeout: 5000}) 
+        }
+      })
+  }
 
 }

@@ -7,30 +7,27 @@
 </div>
 
 <div class="row">
-  <div class="col-md-4">
-    <h3>Express Backend</h3>
-    <p>A rock solid Node.js/Express server using Mongoose to organize models and query the database</p>
-  </div>
-  <div class="col-md-4">
-    <h3>Angular-CLI</h3>
-    <p>Angular-CLI to generate components, services and more. Local dev server and easy compilation</p>
-  </div>
-  <div class="col-md-4">
-    <h3>JWT Tokens</h3>
-    <p>Full featured authentication using JSON web tokens. Login and store user data</p>
-  </div>
+  
 </div>
 
 <div *ngIf="lablist" class="row mt-3">
   <div class="card col-md-4 mt-2" *ngFor="let x of lablist">
-    <h4 class="card-header mdb-color lighten-1 white-text">{{x.labname}} </h4>
+    <h4 class="card-header mdb-color lighten-1 rgba-white-light">{{x.labname}} </h4>
     <div class="card-body">
-        <h5 class="card-title"> {{x.description}}</h5>
-       <div class="row">      
-              <button [routerLink] = "['/addreservation']" type="button" class="btn btn-outline-default waves-effect">Reserve Lab </button>
-              <button (click)="showSearch(x.labname)" type="button" class="btn btn-outline-default waves-effect">View More </button>
+        <h5 class="card-title"> {{x.location}}</h5>
+       <div class="row"> 
+         <div class="col-md-6">
+            <button [routerLink] = "['/addreservation']" type="button" class="btn btn-primary btn-sm btn-outline-default waves-effect">Reserve Lab </button>
+         </div>
+         <div class="col-md-6">
+            <button (click)="showSearch(x.labname)" type="button" class="btn btn-primary btn-sm btn-outline-default waves-effect">View More </button>
+         </div>     
       </div>
     </div>
   </div>
+  
+  </div>
+
+  <div class="row">
   
   </div>
