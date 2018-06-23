@@ -76,5 +76,10 @@ export class AuthService {
     }
     
   }
+  
+  loadUser(){
+    return JSON.parse(localStorage.getItem('user'));
+    
+  }
 
 }

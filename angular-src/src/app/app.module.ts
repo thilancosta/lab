@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { CommonModule } from '@angular/common';
 import { JwtModule } from '@auth0/angular-jwt';
+import {MatInputModule,MatDatepickerModule,MatNativeDateModule,MatSelectModule } from '@angular/material';
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';

@@ -24,12 +24,13 @@
     <table *ngIf="lablist" class="table mt-5">
     
         <!--Table head-->
-        <thead class="table-bordered">
+        <thead class="table-bordered thead-light">
             <tr>
                 <th scope="row">No</th>
                 <th> LAB NAME </th>
                 <th> LOCATION </th>
                 <th> ACTION </th>
+                
             </tr>
         </thead>
       <!--Table head-->
@@ -40,7 +41,7 @@
                 <td scope="row">{{1+i}}</td>
                 <td>{{x.labname}}</td>
                 <td>{{x.location}}</td>
-                <td><button type="button" class="btn btn-primary btn-sm btn-outline-default waves-effect" (click)="onLabDelete(x._id)">Delete</button><td>
+                <td><button type="button" class="btn btn-primary btn-sm btn-outline-default waves-effect" (click)="onLabDelete(x._id)">Delete</button></td>
             </tr>   
         </tbody>
         <!--Table body-->

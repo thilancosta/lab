@@ -8,24 +8,23 @@
     <table *ngIf="reslist" class="table mt-5">
   
         <!--Table head-->
-        <thead class="thead-dark">
+        <thead class="thead-light table-bordered">
             <tr>
-                <th scope="row">#</th>
-                <th> LAB NAME </th>
-                <th> DATE </th>
-                <th> FROM </th>
-                <th>TO</th>
+                <th scope="row">No</th>
+                <th>LAB NAME</th>
+                <th>DATE</th>
+                <th>START TIME</th>
+                <th>END TIME</th>
                 <th>EDIT</th>
-                <th>DELETE </th>
-                <th scope="row"></th>
+                <th>DELETE</th>
             </tr>
         </thead>
       <!--Table head-->
     
         <!--Table body-->
-        <tbody >
-            <tr *ngFor="let x of reslist">
-                <th scope="row">#</th>       
+        <tbody class="table-bordered">
+            <tr *ngFor="let x of reslist; let i = index">
+                <th scope="row">{{1+i}}</th>       
                 <td>{{x.labname}}</td>
                 <td>{{x.reserveddate}}</td>
                 <td>{{x.from}}</td>
