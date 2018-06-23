@@ -26,7 +26,8 @@ const appRoutes: Routes = [
   {path:'register', component: RegisterComponent},
   {path:'login', component: LoginComponent},
   {path:'dashboard', component: DashboardComponent, canActivate:[AuthGuard]},
-  {path:'profile', component: ProfileComponent, canActivate:[AuthGuard]} 
+  {path:'profile', component: ProfileComponent, canActivate:[AuthGuard]},
+  {path:'addreservation',component:ReservationComponent,canActivate:[AuthGuard]}, 
 ]
 export function tokenGetter() {
   return localStorage.getItem('id_token');

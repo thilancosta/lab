@@ -1,11 +1,43 @@
-<div>
-    <ng-container *ngIf="user">
-  <h2 class="page-header"> {{user.name}} </h2>
-  <ul class="list-group">
-    <li class="list-group-item">Username: {{user.username}}</li>
-    <li class="list-group-item">Email: {{user.email}}</li>
-  </ul>
-</ng-container>
-</div>
-
-
+<div *ngIf="user">
+    <h2 class="page-header"> {{user.name}} </h2>
+    <ul class="list-group">
+      <li class="list-group-item"> User Name: {{user.username}}</li>
+      <li class="list-group-item"> Email: {{user.email}}</li>
+    </ul> 
+  
+    <table *ngIf="reslist" class="table mt-5">
+  
+        <!--Table head-->
+        <thead class="thead-dark">
+            <tr>
+                <th scope="row">#</th>
+                <th> LAB NAME </th>
+                <th> DATE </th>
+                <th> FROM </th>
+                <th>TO</th>
+                <th>EDIT</th>
+                <th>DELETE </th>
+                <th scope="row"></th>
+            </tr>
+        </thead>
+      <!--Table head-->
+    
+        <!--Table body-->
+        <tbody >
+            <tr *ngFor="let x of reslist">
+                <th scope="row">#</th>       
+                <td>{{x.labname}}</td>
+                <td>{{x.reserveddate}}</td>
+                <td>{{x.from}}</td>
+                <td>{{x.to}}</td>
+               <td> <button type="button" class="btn btn-outline-warning btn-rounded waves-effect" (click)="onReservationDelete(x._id)">Delete </button></td>
+               <td> <button type="button" class="btn btn-outline-warning btn-rounded waves-effect" (click)="onShowOneReservation(x._id)">Edit </button><td>
+            </tr>
+            
+        </tbody>
+        <!--Table body-->
+    
+    </table>
+  </div>
+  
+  

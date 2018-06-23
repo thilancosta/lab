@@ -19,14 +19,14 @@
     </div>
 </div>
    
-<div>
+<div class="col-md-12">
       <!--Table-->
     <table *ngIf="lablist" class="table mt-5">
     
         <!--Table head-->
         <thead class="table-bordered">
             <tr>
-                
+                <th scope="row">No</th>
                 <th> LAB NAME </th>
                 <th> LOCATION </th>
                 <th> ACTION </th>
@@ -36,8 +36,8 @@
     
         <!--Table body-->
         <tbody class="table-bordered">
-            <tr *ngFor="let x of lablist">
-                       
+            <tr *ngFor="let x of lablist; let i = index">
+                <td scope="row">{{1+i}}</td>
                 <td>{{x.labname}}</td>
                 <td>{{x.location}}</td>
                 <td><button type="button" class="btn btn-primary btn-sm btn-outline-default waves-effect" (click)="onLabDelete(x._id)">Delete</button><td>
