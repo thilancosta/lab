@@ -3,6 +3,7 @@ import { FlashMessagesService } from 'angular2-flash-messages';
 import {ValidateService} from '../services/validate.service'; 
 import {LabService} from '../services/lab.service';
 import {Router} from '@angular/router';
+import {AuthService} from '../services/auth.service';
 
 @Component({
   selector: 'app-home',
@@ -14,7 +15,7 @@ export class HomeComponent implements OnInit {
   description:String;
   lablist = [];
 
-  constructor(
+  constructor(private authService: AuthService,
     private FlashMessageService: FlashMessagesService,
     private validateService:ValidateService,
     private router:Router,

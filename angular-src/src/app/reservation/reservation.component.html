@@ -2,33 +2,37 @@
 <!-- Material form  -->
 <div class="card mt-4 ">
     <div class="container">
-      <form (submit)="onReserveLab()">
+      <form (submit)="onReserveLab()" ngNativeValidate>
         <hr>
       <h4 class="indigo lighten-5">LAB RESERVATION </h4>
       <hr> 
-        <mat-form-field>
-            <mat-select placeholder="Please select the lab you want to reserve" [(ngModel)]="labname" name="labname">
-              <mat-option *ngFor="let x of lablist" value="{{x.labname}}"> {{x.labname}} </mat-option>
-            </mat-select>
-        </mat-form-field>
+        <div class="div">
+          <label for="">Please select the lab</label>
+          <br>
+          <select [(ngModel)]="labname" name="labname">
+            <option *ngFor="let x of lablist" value="{{x.labname}}">{{x.labname}}</option>
+          </select>
+        </div>
         <hr>
-          <h6 class="grey lighten-1">SELECT THE DATE:</h6>
-        <hr> 
-       <mat-form-field>
-        <input matInput [matDatepicker]="picker" placeholder="Choose a date" [(ngModel)]="reserveddate" name="reserveddate">
-        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-        <mat-datepicker #picker> </mat-datepicker>
-      </mat-form-field>
+          <h6 class="">SELECT THE DATE:</h6>
+        
+        <div class="div">
+          <input type="date" min="{{today | date:'yyyy-MM-dd'}}" [(ngModel)]="reserveddate" name="reserveddate">
+        </div>
         <hr>
-         <h6 class="grey lighten-1">SELECT THE TIME SLOT:</h6>
-        <hr> 
-        <mat-form-field>
-          <input type="time" matInput placeholder="From" [(ngModel)]="from" name="form">
-        </mat-form-field>
-        <br/>
-        <mat-form-field>
-          <input type="time" matInput placeholder="To" [(ngModel)]="to" name="to">
-        </mat-form-field>
+         <h6 class="dark-grey-text">SELECT THE TIME SLOT:</h6>
+        <div class="div">
+            <label for="">Start Time</label>
+            <br>
+            <input type="time" min="08:00:00" max="17:00:00" [(ngModel)]="from" name="from">
+        </div>
+        <br>
+        <div class="div">
+            <label for="">End Time </label>
+            <br>
+            <input type="time" min="08:00:00" max="17:00:00" [(ngModel)]="to" name="to">
+        </div> 
+        <hr>
         <div class="text-center mt-4">
             <button class="btn btn-outline-secondary" type="submit">RESERVE LAB <i class="fa fa-paper-plane-o ml-2"></i></button>
         </div>
@@ -38,6 +42,7 @@
         
     </div>
     </div>
+    <br>
     
     
     

@@ -29,4 +29,12 @@ export class ValidateService {
     }
   }
 
+  validateReservation(reservation){
+    if(reservation.labname == undefined || reservation.reserveddate == undefined || reservation.from == undefined || reservation.to == undefined ){
+      return false;
+    } else {
+      return true;
+    }
+  }
+
 }

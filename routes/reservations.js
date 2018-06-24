@@ -6,12 +6,13 @@ const Reservation = require('../models/reservation');
 router.post('/newreservation',(req,res,next) => {   
     let newReservation = new Reservation ({
         username:req.body.username,
-        useremail:req.body.email,
+        useremail:req.body.useremail,
         labname:req.body.labname,
         reserveddate:req.body.reserveddate,
         from:req.body.from,
         to:req.body.to
     }); 
+    console.log(newReservation);
     
     Reservation.addReservation(newReservation ,(err,user) => {
             if(err) {

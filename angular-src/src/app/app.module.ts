@@ -5,7 +5,9 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { CommonModule } from '@angular/common';
 import { JwtModule } from '@auth0/angular-jwt';
-import {MatInputModule,MatDatepickerModule,MatNativeDateModule,MatSelectModule } from '@angular/material';
+// import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+// import {MatDatepickerModule,MatNativeDateModule,MatInputModule,MatSelectModule} from '@angular/material';
+// import {MatFormFieldModule} from '@angular/material/form-field';
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
@@ -59,6 +61,14 @@ export function tokenGetter() {
         blacklistedRoutes: ['localhost:3001/auth/']
       }
     })
+    
+    // MatDatepickerModule,
+    // MatNativeDateModule,
+    // BrowserAnimationsModule,
+    // MatInputModule,
+    // MatSelectModule,
+    // MatFormFieldModule
+    
     
   ],
   providers: [ValidateService,AuthService,AuthGuard],

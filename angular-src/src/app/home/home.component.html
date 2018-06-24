@@ -2,7 +2,11 @@
   <h1>LAB Reservation System</h1>
   <p class="lead">Welcome to UCSC Lab Reservation System</p>
   <div>
-    <a class="btn btn-primary" [routerLink]="['/register']">Register</a> <a class="btn btn-default" [routerLink]="['/login']">Login</a>
+    <ul class="navbar-nav mr-auto">
+        <li class="nav-item" *ngIf="!authService.loggedIn()" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}"><a class="btn btn-primary btn-sm btn-outline-default waves-effect" [routerLink]="['/register']">Register</a></li>
+        <li class="nav-item" *ngIf="!authService.loggedIn()" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}"><a class="btn btn-primary btn-sm btn-outline-default waves-effect" *ngIf="!authService.loggedIn()" [routerLink]="['/login']">Login</a></li>
+         
+    </ul>
   </div>
 </div>
 
