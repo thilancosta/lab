@@ -1,12 +1,12 @@
 
-<!-- Material form  -->
+<!-- Material form login -->
 <div class="card mt-4 ">
     <div class="container">
-      <form (submit)="onReserveLab()" ngNativeValidate>
+      <form (submit)="onEditLabReservation()">
         <hr>
-      <h4 class="indigo lighten-5">LAB RESERVATION </h4>
+      <h4 class="indigo lighten-5">EDIT LAB RESERVATION </h4>
       <hr> 
-        <div class="div">
+      <div class="div">
           <label for="">Please select the lab</label>
           <br>
           <select [(ngModel)]="labname" name="labname" required>
@@ -14,14 +14,13 @@
           </select>
         </div>
         <hr>
-          <h6 class="">SELECT THE DATE:</h6>
-        
-        <div class="div">
-          <input type="date" min="{{today | date:'yyyy-MM-dd'}}" [(ngModel)]="reserveddate" name="reserveddate" required>
-        </div>
-        <hr>
-         <h6 class="dark-grey-text">SELECT THE TIME SLOT:</h6>
-        <div class="div">
+          <h6 class="grey lighten-1">SELECT THE DATE:</h6>
+          <div class="div">
+              <input type="date" min="{{today | date:'yyyy-MM-dd'}}" [(ngModel)]="reserveddate" name="reserveddate" required>
+            </div>
+       <hr> 
+         <h6 class="grey lighten-1">SELECT THE TIME SLOT:</h6>
+         <div class="div">
             <label for="">Start Time</label>
             <br>
             <input type="time" min="08:00:00" max="17:00:00" [(ngModel)]="from" name="from" required>
@@ -31,10 +30,10 @@
             <label for="">End Time </label>
             <br>
             <input type="time" min="08:00:00" max="17:00:00" [(ngModel)]="to" name="to" required>
-        </div> 
-        <hr>
+        </div>
+        <hr> 
         <div class="text-center mt-4">
-            <button class="btn btn-primary btn-md btn-outline-default waves-effect" type="submit">RESERVE LAB</button>
+            <button class="btn btn-primary btn-md btn-outline-default waves-effect" type="submit">EDIT RESERVATION <i class="fa fa-paper-plane-o ml-2"></i></button>
         </div>
       
        
@@ -42,12 +41,11 @@
         
     </div>
     </div>
-    <br>
     
     
     
            
-    <!-- Material form  -->
+    <!-- Material form login -->
                           
     
     

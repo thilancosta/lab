@@ -24,6 +24,7 @@ import { AuthService } from './services/auth.service';
 import {AuthGuard} from './guards/auth.guard';
 import { ReservationComponent } from './reservation/reservation.component';
 import { SearchComponent } from './search/search.component';
+import { EditreservationComponent } from './editreservation/editreservation.component';
 
 const appRoutes: Routes = [
   {path:'', component: HomeComponent},
@@ -32,7 +33,8 @@ const appRoutes: Routes = [
   {path:'dashboard', component: DashboardComponent, canActivate:[AuthGuard]},
   {path:'profile', component: ProfileComponent, canActivate:[AuthGuard]},
   {path:'addreservation',component:ReservationComponent,canActivate:[AuthGuard]},
-  {path:'search/:labname',component:SearchComponent,canActivate:[AuthGuard]} 
+  {path:'search/:labname',component:SearchComponent,canActivate:[AuthGuard]},
+  {path:'editreservation/:id',component:EditreservationComponent,canActivate:[AuthGuard]} 
 ]
 export function tokenGetter() {
   return localStorage.getItem('id_token');
@@ -48,7 +50,8 @@ export function tokenGetter() {
     DashboardComponent,
     ProfileComponent,
     ReservationComponent,
-    SearchComponent
+    SearchComponent,
+    EditreservationComponent
   ],
   imports: [
     BrowserModule,

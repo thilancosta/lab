@@ -2,38 +2,39 @@
     <!--Jumbotron-->
     <div class="jumbotron jumbotron-fluid mt-3">
       <h3 class="h1-reponsive mb-4 mt-2 blue-text font-bold ml-5">Search By Date:</h3>
-      <form (submit)="onSearchReservation()" class="form-inline md-form form-sm active-purple-2 ml-5">
-          <!-- <mat-form-field>
-              <input matInput [matDatepicker]="picker" placeholder="Choose a date" [(ngModel)]="reserveddate" name="reserveddate">
-              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-              <mat-datepicker #picker> </mat-datepicker>
-            </mat-form-field> -->
-            <hr>
-            <div>
-              <label for="">Select a date</label>
-                <input type="date" min="{{today | date:'yyyy-MM-dd'}}" [(ngModel)]="reserveddate" name="reserveddate">
-            </div>
-            <hr>
-            <button type="submit" class="btn btn-outline-secondary waves-effect ">Search</button>
+      <form (submit)="onSearchReservation()" class="form-inline md-form form-sm active-purple-2 ml-5" ngNativeValidate>
+                    <div class="md-form">
+                        <span>Select A Date</span>
+                    </div>
+                    <br>
+                    <div class="md-form">
+                        <input type="date" min="{{today | date:'yyyy-MM-dd'}}" [(ngModel)]="reserveddate" name="reserveddate">
+                        
+                    </div>
+                    <div class="text-center mt-4">
+                        <button type="submit" class="btn btn-primary btn-sm btn-outline-default waves-effect">Search</button>
+                    </div>
+            
+            
       </form>
   </div>
 
-  <table *ngIf="reservationlist" class="table mt-5">
+  <table class="table mt-5">
 
           <!--Table head-->
-          <thead class="thead-dark">
+          <thead class="thead-light table-bordered">
               <tr>
                   <th> DATE </th>
                   <th> FROM </th>
                   <th>TO</th>
-                  <th> RESERVED By </th>
+                  <th> RESERVED BY </th>
                  
               </tr>
           </thead>
         <!--Table head-->
       
           <!--Table body-->
-          <tbody >
+          <tbody *ngIf="reservationlist" class="table-bordered">
               <tr *ngFor="let x of reservationlist">
                          
                   <td><b>{{x.reserveddate}}</b></td>
