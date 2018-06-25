@@ -85,7 +85,7 @@ export class ReservationComponent implements OnInit {
       
 
       } else {
-       this._flashMessagesService.show('Something went wrong',{cssClass: 'alert-danger', timeout: 5000})   
+       this._flashMessagesService.show('Time Overlap',{cssClass: 'alert-danger', timeout: 5000})   
        this.router.navigate(['/addreservation']); 
       }
     });

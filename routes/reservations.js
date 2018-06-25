@@ -3,25 +3,25 @@ const router = express.Router();
 const config = require('../config/database')
 const Reservation = require('../models/reservation');
 
-router.post('/newreservation',(req,res,next) => {   
-    let newReservation = new Reservation ({
-        username:req.body.username,
-        useremail:req.body.useremail,
-        labname:req.body.labname,
-        reserveddate:req.body.reserveddate,
-        from:req.body.from,
-        to:req.body.to
-    }); 
-    console.log(newReservation);
+// router.post('/newreservation',(req,res,next) => {   
+//     let newReservation = new Reservation ({
+//         username:req.body.username,
+//         useremail:req.body.useremail,
+//         labname:req.body.labname,
+//         reserveddate:req.body.reserveddate,
+//         from:req.body.from,
+//         to:req.body.to
+//     }); 
+//     console.log(newReservation);
     
-    Reservation.addReservation(newReservation ,(err,user) => {
-            if(err) {
-                res.json({success:false,msg:'Failed to make reservation'});
-            } else {
-                res.json({success:true,msg:'Reservation make successfully'});
-            }
-        });
-   });
+//     Reservation.addReservation(newReservation ,(err,user) => {
+//             if(err) {
+//                 res.json({success:false,msg:'Failed to make reservation'});
+//             } else {
+//                 res.json({success:true,msg:'Reservation make successfully'});
+//             }
+//         });
+//    });
 
 router.get('/allreservations',(req,res,next) => {
     Reservation.getAllReservations((err,reslist) => {
@@ -80,14 +80,14 @@ router.post('/editreservation/:id',(req,res,next) => {
 
 
     
-    Reservation.addReservation(newReservation ,(err,user) => {
-        console.log(newReservation);
-            if(err) {   
-                res.json({success:false,msg:'Failed to edit reservation'});
-            } else {
-                res.json({success:true,msg:'Reservation edited successfully'});
-            }
-        });
+    // Reservation.addReservation(newReservation ,(err,user) => {
+    //     console.log(newReservation);
+    //         if(err) {   
+    //             res.json({success:false,msg:'Failed to edit reservation'});
+    //         } else {
+    //             res.json({success:true,msg:'Reservation edited successfully'});
+    //         }
+    //     });
    });
 
    router.get('/getreservation/:id',(req,res,next) => {
@@ -128,6 +128,7 @@ router.post('/searchreservation',(req,res,next) => {
             res.json({success:false,msg:'Failed to load that specific lab reservation'});
          }
          else{
+             console.log(reservation);
             res.json({success:true,reservation:reservation}); 
          }
      }
@@ -151,6 +152,74 @@ function isEmpty(obj) {
     }
     return true;
 }
+
+router.post('/newreservation',(req,res,next) => {
+    const labname = req.body.labname;
+    const reserveddate = req.body.reserveddate;
+    const from = req.body.from;
+    const to = req.body.to;       
+    let newReservation = new Reservation ({
+        username:req.body.username,
+        useremail:req.body.useremail,
+        labname:req.body.labname,
+        reserveddate:req.body.reserveddate,
+        from:req.body.from,
+        to:req.body.to
+    });
+    
+    Reservation.getReservationByDate(reserveddate,labname,(err,reservation) => {
+        if(err) {
+            res.json({success:false,msg:'Failed to load that specific lab reservation'});
+        } else  {
+            if(isEmpty(reservation)){
+                
+                Reservation.addReservation(newReservation ,(err,user) => {
+                    if(err) {
+                        res.json({success:false,msg:'Failed to make reservation'});
+                    } else {
+                        res.json({success:true,msg:'Reservation make successfully'});
+                    }
+                });
+            }
+            else{
+                function overlap(reservation){
+                    for (let x of reservation) {
+                        if((x.from<from) && (from<x.to)){
+                            
+                            return false;
+                        }
+                        else if(from<=x.from && x.to<=to){
+                            
+                            return false;
+                        }
+                        else if((x.from<to) && (to<x.to)){
+                            return false;
+                        }
+                    
+                      }
+                      return true;
+
+                }
+                if(overlap(reservation)){
+                    
+                  Reservation.addReservation(newReservation ,(err,user) => {
+                    if(err) {
+                        res.json({success:false,msg:'Failed to make reservation'});
+                    } else {
+                        res.json({success:true,msg:'Reservation make successfully'});
+                    }
+                });
+                }
+                else{
+                    res.json({success:false,msg:'Time Overlap'});
+                }
+                
+                  
+ 
+            }
+        }
+       });
+   })
 
 
 
