@@ -23,6 +23,7 @@ import { FlashMessagesModule } from 'angular2-flash-messages';
 import { AuthService } from './services/auth.service';
 import {AuthGuard} from './guards/auth.guard';
 import { ReservationComponent } from './reservation/reservation.component';
+import { SearchComponent } from './search/search.component';
 
 const appRoutes: Routes = [
   {path:'', component: HomeComponent},
@@ -30,7 +31,8 @@ const appRoutes: Routes = [
   {path:'login', component: LoginComponent},
   {path:'dashboard', component: DashboardComponent, canActivate:[AuthGuard]},
   {path:'profile', component: ProfileComponent, canActivate:[AuthGuard]},
-  {path:'addreservation',component:ReservationComponent,canActivate:[AuthGuard]}, 
+  {path:'addreservation',component:ReservationComponent,canActivate:[AuthGuard]},
+  {path:'search/:labname',component:SearchComponent,canActivate:[AuthGuard]} 
 ]
 export function tokenGetter() {
   return localStorage.getItem('id_token');
@@ -45,7 +47,8 @@ export function tokenGetter() {
     HomeComponent,
     DashboardComponent,
     ProfileComponent,
-    ReservationComponent
+    ReservationComponent,
+    SearchComponent
   ],
   imports: [
     BrowserModule,

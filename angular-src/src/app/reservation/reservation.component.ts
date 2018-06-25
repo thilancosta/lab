@@ -78,7 +78,7 @@ export class ReservationComponent implements OnInit {
     
     this.reservationService.insertReservation(reservation).subscribe(data => {
       if(data.success) {
-       this._flashMessagesService.show('Reservation has been successfully',{cssClass: 'alert-success', timeout: 5000}) 
+       this._flashMessagesService.show('Reservation has been successfully added',{cssClass: 'alert-success', timeout: 5000}) 
         this.ngOnInit();
         this.router.navigate(['/addreservation']); 
         

@@ -111,7 +111,6 @@ router.post('/editreservation/:id',(req,res,next) => {
      if(err) {
          res.json({success:false,msg:'Failed to load that specific lab'});
      } else  {
-         //console.log(rdate);
          res.json({success:true,reservation:reservation});
      }
     });
@@ -125,7 +124,12 @@ router.post('/searchreservation',(req,res,next) => {
      if(err) {
          res.json({success:false,msg:'Failed to load that specific lab reservation'});
      } else  {
-         res.json({success:true,reservation:reservation});
+         if(isEmpty(reservation)){
+            res.json({success:false,msg:'Failed to load that specific lab reservation'});
+         }
+         else{
+            res.json({success:true,reservation:reservation}); 
+         }
      }
     });
     
@@ -138,6 +142,14 @@ processdates = function convert(str) {
         mnth = ("0" + (date.getMonth()+1)).slice(-2),
         day  = ("0" + date.getDate()).slice(-2);
     return [ date.getFullYear(), mnth, day ].join("-");
+}
+
+function isEmpty(obj) {
+    for(var key in obj) {
+        if(obj.hasOwnProperty(key))
+            return false;
+    }
+    return true;
 }
 
 

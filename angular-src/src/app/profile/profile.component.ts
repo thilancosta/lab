@@ -23,6 +23,8 @@ export class ProfileComponent implements OnInit {
   ngOnInit() {
     this.authservice.getProfile().subscribe(profile=>{
     this.user = profile.user;
+    console.log(this.user);
+    
 
   },
   err=>{
@@ -33,8 +35,7 @@ export class ProfileComponent implements OnInit {
 
     const username = this.authservice.loadUser().username;
     this.reservationService.getMyReservation(username).subscribe(List => {
-    this.reslist = List.reslist;
-      
+    this.reslist = List.reslist;   
     },
     err => {
       console.log(err);
