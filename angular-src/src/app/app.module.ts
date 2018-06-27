@@ -1,10 +1,12 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
-import { FormsModule } from '@angular/forms';
+import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { CommonModule } from '@angular/common';
 import { JwtModule } from '@auth0/angular-jwt';
+// For MDB Angular Free
+import { CarouselModule, WavesModule,InputsModule,NavbarModule } from 'angular-bootstrap-md'
 // import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 // import {MatDatepickerModule,MatNativeDateModule,MatInputModule,MatSelectModule} from '@angular/material';
 // import {MatFormFieldModule} from '@angular/material/form-field';
@@ -57,6 +59,7 @@ export function tokenGetter() {
     BrowserModule,
     RouterModule.forRoot(appRoutes),
     FormsModule,
+    ReactiveFormsModule,
     FlashMessagesModule.forRoot(),
     HttpModule,
     CommonModule,
@@ -66,7 +69,11 @@ export function tokenGetter() {
         whitelistedDomains: ['localhost:3001'],
         blacklistedRoutes: ['localhost:3001/auth/']
       }
-    })
+    }),
+    CarouselModule,
+    WavesModule,
+    InputsModule,
+    NavbarModule
     
     // MatDatepickerModule,
     // MatNativeDateModule,

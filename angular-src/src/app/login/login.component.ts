@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {AuthService} from '../services/auth.service';
 import {Router} from '@angular/router';
 import { FlashMessagesService } from 'angular2-flash-messages';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 
 
@@ -13,14 +14,23 @@ import { FlashMessagesService } from 'angular2-flash-messages';
 export class LoginComponent implements OnInit {
   username: String;
   password: String;
+  loginForm: FormGroup;
 
 
   constructor(private authService: AuthService,
     private _flashMessagesService: FlashMessagesService,
-    private router: Router) {}
+    private router: Router,
+    private fb: FormBuilder
+  ) {
+    this.loginForm = fb.group({
+      defaultFormEmail: ['', Validators.required],
+      defaultFormPass: ['', [Validators.required, Validators.minLength(6)]]
+    });
+  }
 
   ngOnInit() {
   }
+  
 
   onLoginSubmit(){
     const user = {

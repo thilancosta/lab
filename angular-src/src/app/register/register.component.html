@@ -1,20 +1,32 @@
-<h2 class="page-header">Register</h2>
-<form (submit)="onRegisterSubmit()">
-  <div class="form-group">
-    <label>Name</label>
-    <input type="text" [(ngModel)]="name" name="name" class="form-control">
-  </div>
-  <div class="form-group">
-    <label>Username</label>
-    <input type="text" [(ngModel)]="username" name="username" class="form-control">
-  </div>
-  <div class="form-group">
-    <label>Email</label>
-    <input type="text" [(ngModel)]="email" name="email" class="form-control" >
-  </div>
-  <div class="form-group">
-    <label>Password</label>
-    <input type="password" [(ngModel)]="password" name="password" class="form-control">
-  </div>
-  <input type="submit" class="btn btn-primary" value="Submit">
-</form>
+
+<!-- Register form -->
+<form [formGroup]="registerForm" (submit)="onRegisterSubmit()">
+    <p class="h5 text-center mb-4 animated bounce">Sign up</p>
+  
+    <div class="md-form">
+      <i class="fa fa-user prefix grey-text"></i>
+      <input type="text" formControlName="orangeFormName" id="orangeForm-name" class="form-control" [(ngModel)]="name" name="name" mdbInputDirective>
+      <label for="orangeForm-name">Your name</label>
+    </div>
+    <div class="md-form">
+        <i class="fa fa-user prefix grey-text"></i>
+        <input type="text" formControlName="orangeFormUsername" id="orangeForm-username" class="form-control" [(ngModel)]="username" name="username" mdbInputDirective>
+        <label for="orangeForm-username">Your username</label>
+      </div>
+    <div class="md-form">
+      <i class="fa fa-envelope prefix grey-text"></i>
+      <input type="text" formControlName="orangeFormEmail" id="orangeForm-email" class="form-control" [(ngModel)]="email" name="email" mdbInputDirective>
+      <label for="orangeForm-email">Your email</label>
+    </div>
+  
+    <div class="md-form">
+      <i class="fa fa-lock prefix grey-text"></i>
+      <input type="password" formControlName="orangeFormPass" id="orangeForm-pass" class="form-control" [(ngModel)]="password" name="password" mdbInputDirective>
+      <label for="orangeForm-pass">Your password</label>
+    </div>
+  
+    <div class="text-center">
+      <input type="submit" class="btn btn-deep-orange waves-light" value="Sign up" mdbWavesEffect>
+    </div>
+  </form>
+  <!-- Register form -->

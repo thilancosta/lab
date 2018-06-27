@@ -1,16 +1,18 @@
 <div *ngIf="user">
-    <h2 class="page-header"> {{user.name}} </h2>
+    <h2 class="page-header animated bounce"> {{user.name}} </h2>
     <ul class="list-group">
       <li class="list-group-item"> User Name: {{user.username}}</li>
       <li class="list-group-item"> Email: {{user.email}}</li>
-    </ul> 
-  
+    </ul>
+    <br>
+    <div>
+    <h5>My Reservations</h5>
     <table *ngIf="reslist" class="table mt-5">
   
         <!--Table head-->
         <thead class="thead-light table-bordered">
             <tr>
-                <th scope="row">No</th>
+                <th scope="row">NO</th>
                 <th>LAB NAME</th>
                 <th>DATE</th>
                 <th>START TIME</th>
@@ -37,6 +39,7 @@
         <!--Table body-->
     
     </table>
+    </div>
   </div>
   
   

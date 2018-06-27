@@ -3,6 +3,7 @@ import { ValidateService } from '../services/validate.service';
 import { FlashMessagesService } from 'angular2-flash-messages';
 import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 
 @Component({
@@ -15,12 +16,19 @@ export class RegisterComponent implements OnInit {
   username: String;
   email: String;
   password: String;
+  registerForm: FormGroup;
 
   constructor(private validateService: ValidateService,
     private _flashMessagesService: FlashMessagesService,
     private authService: AuthService,
-    private router: Router
-  ) {}
+    private router: Router,
+    private fb: FormBuilder
+  ) {this.registerForm = fb.group({
+    orangeFormName: ['', Validators.required],
+    orangeFormUsername: ['', Validators.required],
+    orangeFormEmail: ['', [Validators.required, Validators.email]],
+    orangeFormPass: ['', [Validators.required, Validators.minLength(6)]]
+});}
 
   ngOnInit() {
   }

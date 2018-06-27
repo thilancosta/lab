@@ -1,13 +1,48 @@
 <div class="jumbotron text-center">
-  <h1>LAB Reservation System</h1>
-  <p class="lead">Welcome to UCSC Lab Reservation System</p>
-  <div>
-    <ul class="navbar-nav mr-auto">
-        <li class="nav-item" *ngIf="!authService.loggedIn()" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}"><a class="btn btn-primary btn-sm btn-outline-default waves-effect" [routerLink]="['/register']">Register</a></li>
-        <li class="nav-item" *ngIf="!authService.loggedIn()" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}"><a class="btn btn-primary btn-sm btn-outline-default waves-effect" *ngIf="!authService.loggedIn()" [routerLink]="['/login']">Login</a></li>
-         
-    </ul>
-  </div>
+    <img class="animated bounce " src="data:image/png;base64,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">
+  <h1 class="animated bounce">Welcome To Ucsc Lab Reservation System</h1>
+  <br>
+  <!--Carousel Wrapper-->
+<mdb-carousel [isControls]="true" class="carousel slide carousel-fade" [animation]="'fade'">
+  <!--First slide-->
+  <mdb-slide>
+      <div class="view">
+          <img class="d-block w-100" src="http://idocsny.com/wp-content/uploads/2016/03/manzanita-tour-lab-03.jpg" alt="First slide">
+          <div class="mask rgba-black-strong waves-light" mdbWavesEffect></div>
+      </div>
+      <div class="carousel-caption">
+          <h5 *ngIf="!authService.loggedIn()" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" class="h5-responsive">If you are not a member register</h5>
+          <a *ngIf="!authService.loggedIn()" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" class="btn btn-primary btn-sm btn-outline-default waves-effect" [routerLink]="['/register']">Register</a>
+      </div>
+  </mdb-slide>
+  <!--/First slide-->
+  <!--Second slide-->
+  <mdb-slide>
+      <div class="view">
+          <img class="d-block w-100" src="https://i.ytimg.com/vi/5Y1GpL768Sk/maxresdefault.jpg" alt="Second slide">
+          <div class="mask rgba-black-strong waves-light" mdbWavesEffect></div>
+      </div>
+      <div class="carousel-caption">
+          <h5 *ngIf="!authService.loggedIn()" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" class="h5-responsive">Login here to reserve labs</h5>
+          <a *ngIf="!authService.loggedIn()" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" class="btn btn-primary btn-sm btn-outline-default waves-effect" [routerLink]="['/login']">Login</a>
+          
+      </div>
+  </mdb-slide>
+  <!--/Second slide-->
+  <!--Third slide-->
+  <mdb-slide>
+      <div class="view">
+          <img class="d-block w-100" src="http://irp-cdn.multiscreensite.com/trainingumbrella3/dms3rep/multi/desktop/Meeting_Room_Large_Rent_Kansas_City_q9wy0ucYRRuOiZmoOdMw-4160x2340.jpg" alt="Third slide">
+          <div class="mask rgba-black-strong waves-light" mdbWavesEffect></div>
+      </div>
+      <div class="carousel-caption">
+          <h5 class="h5-responsive"></h5>
+          <p></p>
+      </div>
+  </mdb-slide>
+  <!--/Third slide-->
+</mdb-carousel>
+<!--/.Carousel Wrapper-->
 </div>
 
 <div class="row">
@@ -32,6 +67,5 @@
   
   </div>
 
-  <div class="row">
-  
-  </div>
+  <br>
+  <br>

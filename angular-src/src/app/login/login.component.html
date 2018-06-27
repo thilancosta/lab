@@ -1,12 +1,22 @@
-<h2 class="page-header">Login</h2>
-<form (submit)="onLoginSubmit()">
-  <div class="form-group">
-    <label>Username</label>
-    <input type="text" class="form-control" [(ngModel)]="username" name="username">
+
+<!-- Login form -->
+<form [formGroup]="loginForm" (submit)="onLoginSubmit()" ngNativeValidate>
+  <p class="h5 text-center mb-4 animated bounce">Sign in</p>
+
+  <div class="md-form">
+    <i class="fa fa-envelope prefix grey-text"></i>
+    <input type="text" formControlName="defaultFormEmail" id="defaultForm-email" class="form-control" [(ngModel)]="username" name="username" mdbInputDirective required>
+    <label for="defaultForm-email">Your username</label>
   </div>
-  <div class="form-group">
-    <label>Password</label>
-    <input type="password" class="form-control" [(ngModel)]="password" name="password">
+
+  <div class="md-form">
+    <i class="fa fa-lock prefix grey-text"></i>
+    <input type="password" formControlName="defaultFormPass" id="defaultForm-pass" class="form-control" [(ngModel)]="password" name="password" mdbInputDirective required>
+    <label for="defaultForm-pass">Your password</label>
   </div>
-  <input type="submit" class="btn btn-primary" value="Login">
+
+  <div class="text-center">
+    <input type="submit" class="btn btn-default waves-light" mdbWavesEffect value="Login">
+  </div>
 </form>
+<!-- Login form -->
