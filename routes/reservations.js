@@ -74,15 +74,6 @@ router.post('/editreservation/:id',(req,res,next) => {
         to:req.body.to
     }); 
 
-    Reservation.deleteReservation(id,(err,lab) => {
-        if(err){
-            console.log('error');
-        } else {
-            console.log('success');
-        }
-    });
-
-
     Reservation.getReservationByDate(reserveddate,labname,(err,reservation) => {
         if(err) {
             res.json({success:false,msg:'Failed to load that specific lab reservation'});
@@ -99,24 +90,31 @@ router.post('/editreservation/:id',(req,res,next) => {
             }
             else{
                 function overlap(reservation){
+                    
                     for (let x of reservation) {
                         if((x.from<from) && (from<x.to)){
-                            
-                            return false;
+                            return x.id;
                         }
                         else if(from<=x.from && x.to<=to){
                             
-                            return false;
+                            return x.id;
                         }
                         else if((x.from<to) && (to<x.to)){
-                            return false;
+                            return x.id;
                         }
                     
                       }
-                      return true;
+                      return 20;
 
                 }
-                if(overlap(reservation)){
+                if(overlap(reservation)==20){
+                    Reservation.deleteReservation(id,(err,lab) => {
+                        if(err){
+                            console.log('error');
+                        } else {
+                            console.log('success');
+                        }
+                    });
                     
                   Reservation.addReservation(newReservation ,(err,user) => {
                     if(err) {
@@ -125,6 +123,24 @@ router.post('/editreservation/:id',(req,res,next) => {
                         res.json({success:true,msg:'Reservation make successfully'});
                     }
                 });
+                }
+                else if(overlap(reservation)==id){
+                    Reservation.deleteReservation(id,(err,lab) => {
+                        if(err){
+                            console.log('error');
+                        } else {
+                            console.log('success');
+                        }
+                    });
+                    
+                  Reservation.addReservation(newReservation ,(err,user) => {
+                    if(err) {
+                        res.json({success:false,msg:'Failed to make reservation'});
+                    } else {
+                        res.json({success:true,msg:'Reservation make successfully'});
+                    }
+                });
+
                 }
                 else{
                     res.json({success:false,msg:'Time Overlap'});

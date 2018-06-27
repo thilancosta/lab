@@ -96,7 +96,8 @@ export class EditreservationComponent implements OnInit {
 
     } else {
      this._flashMessagesService.show('Time Overlap',{cssClass: 'alert-danger', timeout: 5000})  
-     this.router.navigate(['/profile']); 
+     this.router.navigate(['/profile']);
+     //this.router.navigate(['editreservation/'+this.id]); 
     }
   });
 
