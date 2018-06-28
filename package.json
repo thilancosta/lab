@@ -13,11 +13,16 @@
     "cors": "*",
     "express": "*",
     "jsonwebtoken": "*",
+    "jspdf": "^1.4.1",
+    "jspdf-autotable": "^2.3.4",
     "mongoose": "*",
     "npm": "^6.1.0",
     "passport": "*",
     "passport-jwt": "*"
   },
   "author": "ThilanCosta",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^10.5.0"
+  }
 }

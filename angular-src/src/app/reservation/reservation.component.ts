@@ -55,6 +55,7 @@ export class ReservationComponent implements OnInit {
   
   
   onReserveLab() {
+    console.log(this.reserveddate);
     const user = this.authService.loadUser();
     const rdate = this.reserveddate.toString();
     const realdate = this.processdates(rdate);

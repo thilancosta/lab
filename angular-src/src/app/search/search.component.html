@@ -1,14 +1,13 @@
  
     <!--Jumbotron-->
     <div class="jumbotron jumbotron-fluid mt-3">
-      <h3 class="h1-reponsive mb-4 mt-2 blue-text font-bold ml-5">Search By Date:</h3>
+      <h3 class="h1-reponsive mb-4 mt-2 blue-text font-bold ml-5 animated bounce">Search By Date:</h3>
       <form (submit)="onSearchReservation()" class="form-inline md-form form-sm active-purple-2 ml-5" ngNativeValidate>
                     <div class="md-form">
-                        <span>Select A Date</span>
+                        <span> <b> Select A Date:</b></span>
                     </div>
-                    <br>
                     <div class="md-form">
-                        <input type="date" min="{{today | date:'yyyy-MM-dd'}}" [(ngModel)]="reserveddate" name="reserveddate">
+                        <input type="date" [(ngModel)]="reserveddate" name="reserveddate">
                         
                     </div>
                     <div class="text-center mt-4">
@@ -17,9 +16,26 @@
             
             
       </form>
+      <div class="row">
+          <div class="col-md-3">
+            
+          </div>
+          <div class="col-md-3">
+                
+            </div>
+            <div class="col-md-3">
+                
+                </div>
+            <div *ngIf="authService.loadUserType()" class="col-md-3">
+                    <p>To export the details as a pdf</p>
+                    <button class="btn btn-primary btn-sm btn-outline-default waves-effect" (click)="download()">Download</button>
+                </div>
+    
+    </div>
+      
   </div>
 
-  <table class="table mt-5">
+  <table id="content"class="table mt-5" #content>
 
           <!--Table head-->
           <thead class="thead-light table-bordered">
