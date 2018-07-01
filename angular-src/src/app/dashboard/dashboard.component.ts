@@ -40,8 +40,6 @@ export class DashboardComponent implements OnInit {
     }
     
     if(!this.validateService.validateLab(lab)){
-      console.log(lab.labname);
-      console.log(lab.location);
        this.FlashMessageService.show('Please fill Requied Fields',{cssClass: 'alert-danger', timeout: 5000})
        return false;
     }

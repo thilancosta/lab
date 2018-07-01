@@ -2,31 +2,31 @@
 <!-- Material form login -->
 <div class="card mt-4 ">
     <div class="container">
-      <form (submit)="onEditLabReservation()">
+      <form (submit)="onEditLabReservation()" ngNativeValidate>
         <hr>
       <h4 class="indigo lighten-5">EDIT LAB RESERVATION </h4>
       <hr> 
-      <div class="div">
-          <label for="">Please select the lab</label>
+      <div class="form-group">
+          <label for=""><b> Please select the lab</b></label>
           <br>
           <select [(ngModel)]="labname" name="labname" required>
             <option *ngFor="let x of lablist" value="{{x.labname}}">{{x.labname}}</option>
           </select>
         </div>
         <hr>
-          <h6 class="">SELECT THE DATE:</h6>
-          <div class="div">
+          <h6 class=""><b> SELECT THE DATE:</b></h6>
+          <div class="form-group">
               <input type="date" min="{{today | date:'yyyy-MM-dd'}}" [(ngModel)]="reserveddate" name="reserveddate" required>
             </div>
        <hr> 
-         <h6 class="">SELECT THE TIME SLOT:</h6>
-         <div class="div">
+         <h6 class=""><b> SELECT THE TIME SLOT:</b></h6>
+         <div class="form-group">
             <label for="">Start Time</label>
             <br>
             <input type="time" min="08:00:00" max="17:00:00" [(ngModel)]="from" name="from" required>
         </div>
         <br>
-        <div class="div">
+        <div class="form-group">
             <label for="">End Time </label>
             <br>
             <input type="time" min="08:00:00" max="17:00:00" [(ngModel)]="to" name="to" required>

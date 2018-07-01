@@ -3,25 +3,6 @@ const router = express.Router();
 const config = require('../config/database')
 const Reservation = require('../models/reservation');
 
-// router.post('/newreservation',(req,res,next) => {   
-//     let newReservation = new Reservation ({
-//         username:req.body.username,
-//         useremail:req.body.useremail,
-//         labname:req.body.labname,
-//         reserveddate:req.body.reserveddate,
-//         from:req.body.from,
-//         to:req.body.to
-//     }); 
-//     console.log(newReservation);
-    
-//     Reservation.addReservation(newReservation ,(err,user) => {
-//             if(err) {
-//                 res.json({success:false,msg:'Failed to make reservation'});
-//             } else {
-//                 res.json({success:true,msg:'Reservation make successfully'});
-//             }
-//         });
-//    });
 
 router.get('/allreservations',(req,res,next) => {
     Reservation.getAllReservations((err,reslist) => {
@@ -79,6 +60,7 @@ router.post('/editreservation/:id',(req,res,next) => {
             res.json({success:false,msg:'Failed to load that specific lab reservation'});
         } else  {
             if(isEmpty(reservation)){
+                console.log('err1');
                 
                 Reservation.addReservation(newReservation ,(err,user) => {
                     if(err) {
@@ -92,22 +74,23 @@ router.post('/editreservation/:id',(req,res,next) => {
                 function overlap(reservation){
                     
                     for (let x of reservation) {
-                        if((x.from<from) && (from<x.to)){
-                            return x.id;
+                        if((x.from<from) && (from<x.to) && (x.id!=id)){
+                            return false;
                         }
-                        else if(from<=x.from && x.to<=to){
+                        else if((from<=x.from) && (x.to<=to) && (x.id!=id)){
                             
-                            return x.id;
+                            return false;
                         }
-                        else if((x.from<to) && (to<x.to)){
-                            return x.id;
+                        else if((x.from<to) && (to<x.to) && (x.id!=id)){
+                            return false;
                         }
                     
                       }
-                      return 20;
+                      return true;
 
                 }
-                if(overlap(reservation)==20){
+                if(overlap(reservation)){
+                    console.log('err2');
                     Reservation.deleteReservation(id,(err,lab) => {
                         if(err){
                             console.log('error');
@@ -123,26 +106,9 @@ router.post('/editreservation/:id',(req,res,next) => {
                         res.json({success:true,msg:'Reservation make successfully'});
                     }
                 });
-                }
-                else if(overlap(reservation)==id){
-                    Reservation.deleteReservation(id,(err,lab) => {
-                        if(err){
-                            console.log('error');
-                        } else {
-                            console.log('success');
-                        }
-                    });
-                    
-                  Reservation.addReservation(newReservation ,(err,user) => {
-                    if(err) {
-                        res.json({success:false,msg:'Failed to make reservation'});
-                    } else {
-                        res.json({success:true,msg:'Reservation make successfully'});
-                    }
-                });
-
                 }
                 else{
+                    console.log('err4');
                     res.json({success:false,msg:'Time Overlap'});
                 }
                 
@@ -151,14 +117,6 @@ router.post('/editreservation/:id',(req,res,next) => {
             }
         }
        });
-    // Reservation.addReservation(newReservation ,(err,user) => {
-    //     console.log(newReservation);
-    //         if(err) {   
-    //             res.json({success:false,msg:'Failed to edit reservation'});
-    //         } else {
-    //             res.json({success:true,msg:'Reservation edited successfully'});
-    //         }
-    //     });
    });
 
    router.get('/getreservation/:id',(req,res,next) => {
@@ -292,44 +250,6 @@ router.post('/newreservation',(req,res,next) => {
        });
    })
 
-
-
-
-        
-  
-
-   
-
-
-
-
-
-
-
-
-
-
-// router.delete('/:id',(req,res,next) => {    
-//     const id = req.params.id;
-//     Lab.deleteLab(id,(err,lab) => {
-//         if(err){
-//             res.json({success:false,msg:'Something went worng'})
-//         } else {
-//             res.json({success:true,msg:'lab details deleted successfully'});
-//         }
-//     });
-// });
-
-// router.post('/editLab/:id',(req,res,next) =>{
-//     const id = req.params.id;
-//     Lab.editLab(id,(err,lab) =>{
-//         if(err){
-//             res.json({success:false,msg:'Something went wrong'});
-//         } else {
-//             res.json({success:true,msg:'Lab details Edited Successfully'});
-//         }
-//     });
-// });
 
 
 module.exports = router;

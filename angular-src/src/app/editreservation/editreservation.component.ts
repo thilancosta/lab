@@ -75,7 +75,6 @@ export class EditreservationComponent implements OnInit {
     const user = this.authService.loadUser();
     const rdate = this.reserveddate.toString();
     const realdate = this.processdates(rdate);
-    console.log(realdate);
     const editedreservation = {
       username:user.username,
       useremail:user.email,
@@ -85,8 +84,6 @@ export class EditreservationComponent implements OnInit {
       to:this.to
 
   } 
-  console.log(editedreservation);
-  console.log('on edit reservation');
   this.reservationService.editReservation(this.id,editedreservation).subscribe(data => {
     if(data.success) {
      this._flashMessagesService.show('Reservation has been successfully Edited',{cssClass: 'alert-success', timeout: 5000}) 
@@ -96,8 +93,9 @@ export class EditreservationComponent implements OnInit {
 
     } else {
      this._flashMessagesService.show('This time period was reserved earlier',{cssClass: 'alert-danger', timeout: 5000})  
-     this.router.navigate(['/profile']);
-     //this.router.navigate(['editreservation/'+this.id]); 
+     //this.router.navigate(['/profile']);
+     this.router.navigate(['editreservation/'+this.id]);
+     this.ngOnInit(); 
     }
   });
 
